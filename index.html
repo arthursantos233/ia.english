@@ -426,9 +426,11 @@
                 }, 50);
             }
 
-            // Botão de teste de som
+            // Botão de teste de som - agora fala a saudação do professor
             soundTestBtn.addEventListener('click', () => {
-                speak("Sound works! I am Mister Davies.", () => {
+                const greeting = "Hello! I'm Mr. Davies, your neon English tutor. Let's practice together! How are you today?";
+                // Não adiciona mensagem ao chat para não poluir, mas se quiser pode adicionar
+                speak(greeting, () => {
                     statusBar.textContent = 'Speaker test complete.';
                 });
                 statusBar.textContent = 'Testing speaker...';
