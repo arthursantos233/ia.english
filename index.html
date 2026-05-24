@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon English Tutor | Mr. Davies</title>
+    <title>Neon English Tutor | Mr. Davies (Fixed Voice)</title>
     <style>
         :root {
             --bg: #0a0a0a;
@@ -43,9 +43,7 @@
             opacity: 0.3;
             animation: float 8s infinite ease-in-out;
         }
-        .particle:nth-child(odd) {
-            background: var(--azul);
-        }
+        .particle:nth-child(odd) { background: var(--azul); }
         @keyframes float {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-20px) scale(1.2); }
@@ -73,11 +71,7 @@
             border-bottom: 1px solid var(--roxo);
             box-shadow: 0 0 12px var(--roxo);
         }
-        .avatar-container {
-            position: relative;
-            width: 70px;
-            height: 70px;
-        }
+        .avatar-container { position: relative; width: 70px; height: 70px; }
         .avatar {
             width: 70px;
             height: 70px;
@@ -93,223 +87,125 @@
             0% { box-shadow: 0 0 20px var(--azul), 0 0 40px var(--roxo); }
             100% { box-shadow: 0 0 35px var(--azul-glow), 0 0 70px var(--roxo-glow); }
         }
-        .face {
-            position: relative;
-            width: 50px;
-            height: 50px;
-        }
-        .eyes {
-            display: flex;
-            justify-content: space-between;
-            width: 40px;
-            margin: 8px auto 0;
-        }
-        .eye {
-            width: 10px;
-            height: 14px;
-            background: #111;
-            border-radius: 50%;
-            position: relative;
-        }
-        .eye::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            top: 3px;
-            left: 3px;
-        }
+        .face { position: relative; width: 50px; height: 50px; }
+        .eyes { display: flex; justify-content: space-between; width: 40px; margin: 8px auto 0; }
+        .eye { width: 10px; height: 14px; background: #111; border-radius: 50%; position: relative; }
+        .eye::after { content: ''; position: absolute; width: 4px; height: 4px; background: white; border-radius: 50%; top: 3px; left: 3px; }
         .mouth {
-            width: 20px;
-            height: 4px;
-            background: #222;
-            margin: 8px auto 0;
-            border-radius: 0 0 10px 10px;
-            transition: all 0.1s ease;
+            width: 20px; height: 4px; background: #222;
+            margin: 8px auto 0; border-radius: 0 0 10px 10px; transition: all 0.1s ease;
         }
         .speaking .mouth {
-            height: 12px;
-            border-radius: 50%;
-            background: #333;
+            height: 12px; border-radius: 50%; background: #333;
             animation: talk 0.2s infinite alternate;
         }
         @keyframes talk {
-            0% { height: 12px; }
-            100% { height: 18px; }
+            0% { height: 12px; } 100% { height: 18px; }
         }
         .header-text h1 {
-            font-size: 1.6rem;
-            color: white;
-            text-shadow: 0 0 8px var(--azul), 0 0 18px var(--roxo);
-            letter-spacing: 1px;
+            font-size: 1.6rem; color: white;
+            text-shadow: 0 0 8px var(--azul), 0 0 18px var(--roxo); letter-spacing: 1px;
         }
-        .subtitle {
-            font-size: 0.85rem;
-            color: #ccc;
-            text-shadow: 0 0 5px var(--roxo);
-        }
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            background: transparent;
-        }
-        .message {
-            display: flex;
-        }
-        .message.user {
-            justify-content: flex-end;
-        }
-        .message-content {
-            max-width: 80%;
-            padding: 12px 18px;
-            border-radius: 20px;
-            line-height: 1.5;
-            font-size: 1rem;
-            word-wrap: break-word;
-            animation: messagePop 0.3s ease;
-        }
-        @keyframes messagePop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .message.bot .message-content {
-            background: #0d1b2a;
+        .subtitle { font-size: 0.85rem; color: #ccc; text-shadow: 0 0 5px var(--roxo); }
+        .sound-test-btn {
+            background: rgba(255,255,255,0.1);
             border: 1px solid var(--azul);
-            color: #e0f0ff;
-            box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
-            border-bottom-left-radius: 4px;
-        }
-        .message.user .message-content {
-            background: #2a1a3a;
-            border: 1px solid var(--roxo);
-            color: white;
-            box-shadow: 0 0 8px rgba(155, 48, 255, 0.4);
-            border-bottom-right-radius: 4px;
-        }
-        .correction-note {
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 3px solid #ffc107;
-            padding: 6px 10px;
-            margin-top: 6px;
-            font-size: 0.85rem;
-            border-radius: 0 6px 6px 0;
-            color: #ffd966;
-            text-shadow: 0 0 4px black;
-        }
-        .chat-input-area {
-            display: flex;
-            padding: 14px 16px;
-            background: rgba(0,0,0,0.6);
-            border-top: 1px solid var(--roxo);
-            gap: 10px;
-            align-items: center;
-        }
-        #userInput {
-            flex: 1;
-            padding: 12px 18px;
-            border: 2px solid var(--roxo);
-            border-radius: 30px;
-            font-size: 1rem;
-            outline: none;
-            background: #111;
-            color: white;
-            caret-color: var(--azul);
-            transition: border 0.3s, box-shadow 0.3s;
-        }
-        #userInput:focus {
-            border-color: var(--azul);
-            box-shadow: 0 0 12px var(--azul);
-        }
-        .btn {
-            border: none;
-            color: white;
-            cursor: pointer;
+            color: var(--azul);
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            cursor: pointer;
+            font-size: 1.2rem;
             transition: all 0.2s;
-            background: transparent;
+            margin-left: auto;
+        }
+        .sound-test-btn:hover {
+            background: var(--azul);
+            color: black;
+            box-shadow: 0 0 15px var(--azul-glow);
+        }
+        .chat-messages {
+            flex: 1; overflow-y: auto; padding: 20px;
+            display: flex; flex-direction: column; gap: 16px; background: transparent;
+        }
+        .message { display: flex; }
+        .message.user { justify-content: flex-end; }
+        .message-content {
+            max-width: 80%; padding: 12px 18px; border-radius: 20px;
+            line-height: 1.5; font-size: 1rem; word-wrap: break-word;
+            animation: messagePop 0.3s ease;
+        }
+        @keyframes messagePop {
+            0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; }
+        }
+        .message.bot .message-content {
+            background: #0d1b2a; border: 1px solid var(--azul);
+            color: #e0f0ff; box-shadow: 0 0 8px rgba(0, 212, 255, 0.3); border-bottom-left-radius: 4px;
+        }
+        .message.user .message-content {
+            background: #2a1a3a; border: 1px solid var(--roxo);
+            color: white; box-shadow: 0 0 8px rgba(155, 48, 255, 0.4); border-bottom-right-radius: 4px;
+        }
+        .correction-note {
+            background: rgba(255, 193, 7, 0.1); border-left: 3px solid #ffc107;
+            padding: 6px 10px; margin-top: 6px; font-size: 0.85rem;
+            border-radius: 0 6px 6px 0; color: #ffd966; text-shadow: 0 0 4px black;
+        }
+        .chat-input-area {
+            display: flex; padding: 14px 16px;
+            background: rgba(0,0,0,0.6); border-top: 1px solid var(--roxo); gap: 10px; align-items: center;
+        }
+        #userInput {
+            flex: 1; padding: 12px 18px; border: 2px solid var(--roxo);
+            border-radius: 30px; font-size: 1rem; outline: none;
+            background: #111; color: white; caret-color: var(--azul);
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        #userInput:focus { border-color: var(--azul); box-shadow: 0 0 12px var(--azul); }
+        .btn {
+            border: none; color: white; cursor: pointer; border-radius: 50%;
+            width: 48px; height: 48px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; transition: all 0.2s; background: transparent;
         }
         #micButton {
-            background: rgba(155,48,255,0.2);
-            border: 2px solid var(--roxo);
-            box-shadow: 0 0 10px var(--roxo);
+            background: rgba(155,48,255,0.2); border: 2px solid var(--roxo); box-shadow: 0 0 10px var(--roxo);
         }
-        #micButton:hover {
-            background: var(--roxo);
-            box-shadow: 0 0 18px var(--roxo-glow);
-        }
+        #micButton:hover { background: var(--roxo); box-shadow: 0 0 18px var(--roxo-glow); }
         #micButton.listening {
-            background: #e74c3c;
-            border-color: #e74c3c;
-            box-shadow: 0 0 20px #e74c3c;
-            animation: pulseMic 1s infinite;
+            background: #e74c3c; border-color: #e74c3c;
+            box-shadow: 0 0 20px #e74c3c; animation: pulseMic 1s infinite;
         }
         @keyframes pulseMic {
-            0% { box-shadow: 0 0 10px #e74c3c; }
-            50% { box-shadow: 0 0 30px #e74c3c; }
-            100% { box-shadow: 0 0 10px #e74c3c; }
+            0% { box-shadow: 0 0 10px #e74c3c; } 50% { box-shadow: 0 0 30px #e74c3c; } 100% { box-shadow: 0 0 10px #e74c3c; }
         }
         #sendButton {
-            background: rgba(0,212,255,0.2);
-            border: 2px solid var(--azul);
-            box-shadow: 0 0 10px var(--azul);
-            border-radius: 30px;
-            width: auto;
-            padding: 12px 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            background: rgba(0,212,255,0.2); border: 2px solid var(--azul);
+            box-shadow: 0 0 10px var(--azul); border-radius: 30px;
+            width: auto; padding: 12px 20px; font-weight: 600; font-size: 0.9rem;
         }
-        #sendButton:hover {
-            background: var(--azul);
-            box-shadow: 0 0 18px var(--azul-glow);
-        }
-        #sendButton:disabled, #micButton:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
+        #sendButton:hover { background: var(--azul); box-shadow: 0 0 18px var(--azul-glow); }
+        #sendButton:disabled, #micButton:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
         .status-bar {
-            text-align: center;
-            padding: 4px;
-            background: #000;
-            color: var(--azul);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--roxo);
+            text-align: center; padding: 4px; background: #000;
+            color: var(--azul); font-size: 0.8rem; border-top: 1px solid var(--roxo);
             text-shadow: 0 0 6px var(--azul);
         }
         .typing-indicator {
-            display: flex;
-            gap: 4px;
-            padding: 12px 16px;
-            background: #0d1b2a;
-            border: 1px solid var(--azul);
-            border-radius: 20px;
-            width: fit-content;
-            box-shadow: 0 0 8px rgba(0,212,255,0.3);
+            display: flex; gap: 4px; padding: 12px 16px;
+            background: #0d1b2a; border: 1px solid var(--azul);
+            border-radius: 20px; width: fit-content; box-shadow: 0 0 8px rgba(0,212,255,0.3);
         }
         .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            background: var(--azul);
-            border-radius: 50%;
-            animation: typingBounce 1.2s infinite ease-in-out;
+            width: 8px; height: 8px; background: var(--azul);
+            border-radius: 50%; animation: typingBounce 1.2s infinite ease-in-out;
         }
         .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
         .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes typingBounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-10px); }
+            0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); }
         }
     </style>
 </head>
@@ -320,10 +216,7 @@
             <div class="avatar-container">
                 <div class="avatar" id="avatar">
                     <div class="face">
-                        <div class="eyes">
-                            <div class="eye"></div>
-                            <div class="eye"></div>
-                        </div>
+                        <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
                         <div class="mouth" id="mouth"></div>
                     </div>
                 </div>
@@ -332,6 +225,7 @@
                 <h1>Mr. Davies</h1>
                 <p class="subtitle">Neon English Tutor</p>
             </div>
+            <button class="sound-test-btn" id="soundTestBtn" title="Test speaker">🔊</button>
         </header>
         <div class="chat-messages" id="chatMessages"></div>
         <div class="chat-input-area">
@@ -350,7 +244,7 @@
             const micButton = document.getElementById('micButton');
             const statusBar = document.getElementById('statusBar');
             const avatar = document.getElementById('avatar');
-            const mouth = document.getElementById('mouth');
+            const soundTestBtn = document.getElementById('soundTestBtn');
             const particlesContainer = document.getElementById('particles');
 
             // Partículas de fundo
@@ -418,11 +312,8 @@
                     const match = text.match(rule.pattern);
                     if (match) {
                         let corrected;
-                        if (typeof rule.correction === 'function') {
-                            corrected = rule.correction(...match);
-                        } else {
-                            corrected = text.replace(rule.pattern, rule.correction);
-                        }
+                        if (typeof rule.correction === 'function') corrected = rule.correction(...match);
+                        else corrected = text.replace(rule.pattern, rule.correction);
                         return { original: match[0], corrected, explanation: rule.explanation };
                     }
                 }
@@ -487,25 +378,29 @@
                 return { text: "I see! " + newQ, correction: correctionResult };
             }
 
-            // Síntese de voz (Text-to-Speech)
+            // ========== SÍNTESE DE VOZ CORRIGIDA ==========
             let isSpeaking = false;
             function speak(text, callback) {
                 if (!('speechSynthesis' in window)) {
+                    console.warn('TTS not supported');
                     if (callback) callback();
                     return;
                 }
-                window.speechSynthesis.cancel(); // Cancela qualquer fala anterior
+                // Cancela qualquer fala anterior
+                window.speechSynthesis.cancel();
                 const cleanText = text.replace(/<[^>]*>/g, '');
                 const utterance = new SpeechSynthesisUtterance(cleanText);
                 utterance.lang = 'en-US';
                 utterance.rate = 0.9;
                 utterance.pitch = 1.1;
-                const setVoice = () => {
+
+                // Função para definir voz, executada imediatamente e após carregamento
+                function setVoice() {
                     const voices = window.speechSynthesis.getVoices();
                     const maleVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Male')) ||
                                       voices.find(v => v.lang.startsWith('en'));
                     if (maleVoice) utterance.voice = maleVoice;
-                };
+                }
                 setVoice();
                 window.speechSynthesis.onvoiceschanged = setVoice;
 
@@ -519,15 +414,27 @@
                     if (callback) callback();
                 };
                 utterance.onerror = (e) => {
-                    console.error('TTS error:', e);
+                    console.error('TTS error:', e.error);
                     isSpeaking = false;
                     avatar.classList.remove('speaking');
                     if (callback) callback();
                 };
-                window.speechSynthesis.speak(utterance);
+
+                // Força um pequeno delay para garantir que o cancel foi processado
+                setTimeout(() => {
+                    window.speechSynthesis.speak(utterance);
+                }, 50);
             }
 
-            // Reconhecimento de voz (Speech-to-Text) - Corrigido
+            // Botão de teste de som
+            soundTestBtn.addEventListener('click', () => {
+                speak("Sound works! I am Mister Davies.", () => {
+                    statusBar.textContent = 'Speaker test complete.';
+                });
+                statusBar.textContent = 'Testing speaker...';
+            });
+
+            // ========== RECONHECIMENTO DE VOZ ==========
             let recognition = null;
             let isListening = false;
 
@@ -555,14 +462,13 @@
                     if (transcript) {
                         userInput.value = transcript;
                         statusBar.textContent = 'Heard: ' + transcript;
-                        // Enviar automaticamente
                         handleSend();
                     }
                 };
                 recog.onerror = (event) => {
                     console.error('Speech error:', event.error);
                     if (event.error === 'not-allowed') {
-                        statusBar.textContent = 'Microphone access blocked. Allow in site settings.';
+                        statusBar.textContent = 'Microphone blocked. Allow in site settings.';
                     } else if (event.error === 'no-speech') {
                         statusBar.textContent = 'No speech detected. Try again.';
                     } else {
@@ -601,14 +507,11 @@
             }
 
             micButton.addEventListener('click', () => {
-                if (isListening) {
-                    stopListening();
-                } else {
-                    startListening();
-                }
+                if (isListening) stopListening();
+                else startListening();
             });
 
-            // UI: Adicionar mensagens
+            // UI
             function addMessage(text, sender, correctionData = null) {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `message ${sender}`;
@@ -667,6 +570,7 @@
                 const replyData = generateReply(message);
                 addMessage(replyData.text, 'bot', replyData.correction);
 
+                // Agora que o usuário interagiu, o TTS funcionará
                 speak(replyData.text, () => {
                     userInput.disabled = false;
                     sendButton.disabled = false;
@@ -683,17 +587,15 @@
                 }
             });
 
-            // Parar microfone se o usuário começar a digitar
             userInput.addEventListener('focus', () => {
                 if (isListening) stopListening();
             });
 
-            // Iniciar conversa
+            // Iniciar conversa (apenas texto, sem áudio automático)
             function startConversation() {
-                const greeting = "Hello! I'm <b>Mr. Davies</b>, your neon English tutor. 👨‍🏫 Let's practice together! How are you today?";
+                const greeting = "Hello! I'm <b>Mr. Davies</b>, your neon English tutor. 👨‍🏫<br>🔊 Click the speaker icon to test sound, then send me a message!<br>How are you today?";
                 addMessage(greeting, 'bot');
                 state.questionPending = true;
-                speak(greeting);
             }
 
             startConversation();
